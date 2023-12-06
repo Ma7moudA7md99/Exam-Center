@@ -3,6 +3,8 @@ from flask import Flask, redirect, render_template, request, url_for
 import pyodbc
 
 # database connection
+# SERVER={your server name}
+# change before running
 connection_string = 'DRIVER=SQL Server;SERVER=MAHMOUD_AHMED;DATABASE=exam_center;'
 
 # initialize app name
