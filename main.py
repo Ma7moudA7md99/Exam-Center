@@ -14,7 +14,7 @@ exam_center = Flask(__name__)
 # Check the current user session.
 @exam_center.route('/', methods=['GET', 'POST'])
 def login():
-    return render_template('home.html')
+    return render_template('home.html', page_title = 'Home')
 
 
 @exam_center.route('/doctor', methods=["GET", "POST"])
@@ -47,7 +47,7 @@ def get_login():
             print("Error in fetching data")
 
     # Return empty string
-    return render_template('login.html', title = 'Doctor Log')
+    return render_template('login.html', title = 'Doctor Log', page_title= 'Doctor')
 
 @exam_center.route('/student', methods=["GET", "POST"])
 def student_login():
@@ -77,6 +77,9 @@ def student_login():
         except:
             print("Error in fetching data")
     # Return empty string
-    return render_template('login.html', title = 'Student Log')
+    return render_template('login.html', title = 'Student Log', page_title= 'Student')
+
+
+
 if __name__ == '__main__':
     exam_center.run(debug=True)
