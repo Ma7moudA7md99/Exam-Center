@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% block body %}
+<!-- nav bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container ">
+    <a class="navbar-brand" href="#">Exam Center</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" aria-current="page" href="#">Home</a>
+        <a class="nav-link" href="#">Doctor</a>
+        <a class="nav-link" href="#">Student</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- home content -->
+<div class="container mt-5 d-flex flex-column align-items-center">
+  <h1 class="mt-5 fs-1 text-white">Welcome to Exam Center</h1>
+  <p class="mt-5 text-white">Here is your way to progress</p>
+  <form action="/doctor" method="post">
+    <input type="submit" class="btn btn-outline-primary mt-5 me-5" value="Doctor">
+
+    <input type="button" class="btn btn-outline-primary mt-5 ms-5" value="Student">
+  </form>
+</div>
+{% endblock %}

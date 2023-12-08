@@ -14,10 +14,10 @@ exam_center = Flask(__name__)
 # Check the current user session.
 @exam_center.route('/', methods=['GET'])
 def login():
-    return render_template('index.html')
+    return render_template('home.html')
 
 
-@exam_center.route('/login', methods=["GET", "POST"])
+@exam_center.route('/doctor', methods=["GET", "POST"])
 def get_login():
     # Declare global variables
     global username, password
@@ -63,7 +63,7 @@ def get_login():
                 print("Error in fetching data")
 
     # Return empty string
-    return ""
+    return render_template('doctorlog.html')
 
 
 if __name__ == '__main__':

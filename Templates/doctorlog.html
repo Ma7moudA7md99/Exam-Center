@@ -1,0 +1,36 @@
+{% extends 'index.html' %} 
+{% block body %}
+<div
+  class="container-lg d-flex justify-content-center w-25 bg-light shadow-sm rounded"
+>
+  <form action="/login" method="post" class="w-100 m-3 mt-5 mb-5">
+    <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        id="username"
+        placeholder="Username"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        id="password"
+        placeholder="Password"
+        required
+      />
+      <input
+        type="submit"
+        class="form-control mt-5 bg-primary text-white"
+        value="Log In"
+      />
+    </div>
+  </form>
+</div>
+{% endblock %}
