@@ -12,7 +12,7 @@ exam_center = Flask(__name__)
 
 
 # Check the current user session.
-@exam_center.route('/', methods=['GET'])
+@exam_center.route('/', methods=['GET', 'POST'])
 def login():
     return render_template('home.html')
 
@@ -20,8 +20,8 @@ def login():
 @exam_center.route('/doctor', methods=["GET", "POST"])
 def get_login():
     # Declare global variables
-    global username, password
-
+    global username, password, title
+    title = ""
     # If the request method is POST
     if request.method == 'POST':
         # Get username and password from form
@@ -42,29 +42,41 @@ def get_login():
             if doctor_check[0] == password:
                 print('Doctor')
             else:
-                print('wrong password')
-
-        # Handle errors while retrieving doctor's password
+                print('wrong username or password')
         except:
-            try:
-                # Attempt to retrieve password for student
-                cursor.execute(
-                    f"select passkey from student where username = '{username}'")
-                student_check = cursor.fetchone()
-
-                # Check if the student's password matches
-                if student_check[0] == password:
-                    return "redirect(url_for('student'))"
-                else:
-                    print('wrong password')
-
-            # Handle errors while retrieving student's password
-            except:
-                print("Error in fetching data")
+            print("Error in fetching data")
 
     # Return empty string
-    return render_template('doctorlog.html')
+    return render_template('login.html', title = 'Doctor Log')
 
+@exam_center.route('/student', methods=["GET", "POST"])
+def student_login():
+    # Declare global variables
+    global username, password
+    title = ""
+    # If the request method is POST
+    if request.method == 'POST':
+        # Get username and password from form
+        username = request.form.get('username')
+        password = request.form.get('password')
 
+        # Establish connection with database
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+
+        try:
+            # Attempt to retrieve password for student
+            cursor.execute(
+                f"select passkey from student where username = '{username}'")
+            student_check = cursor.fetchone()
+            # Check if the student's password matches
+            if student_check[0] == password:
+                return "redirect(url_for('student'))"
+            else:
+                print('wrong username or password')
+        except:
+            print("Error in fetching data")
+    # Return empty string
+    return render_template('login.html', title = 'Student Log')
 if __name__ == '__main__':
     exam_center.run(debug=True)

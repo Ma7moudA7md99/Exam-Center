@@ -10,8 +10,8 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">Doctor</a>
-        <a class="nav-link" href="#">Student</a>
+        <a class="nav-link" href="http://127.0.0.1:5000/doctor">Doctor</a>
+        <a class="nav-link" href="http://127.0.0.1:5000/student">Student</a>
       </div>
     </div>
   </div>
@@ -20,10 +20,21 @@
 <div class="container mt-5 d-flex flex-column align-items-center">
   <h1 class="mt-5 fs-1 text-white">Welcome to Exam Center</h1>
   <p class="mt-5 text-white">Here is your way to progress</p>
-  <form action="/doctor" method="post">
-    <input type="submit" class="btn btn-outline-primary mt-5 me-5" value="Doctor">
-
-    <input type="button" class="btn btn-outline-primary mt-5 ms-5" value="Student">
-  </form>
+  <div class="container forms d-flex justify-content-around w-50 mt-5" >
+    <form method="post" action="/student">
+      <input 
+      type="submit"
+      name="button" 
+      class="btn btn-outline-secondary mt-5" 
+      value="Student">
+    </form>
+    <form method="post" action="/doctor" >
+      <input 
+      type="submit" 
+      name="button" 
+      class="btn btn-outline-secondary mt-5" 
+      value="Doctor">
+    </form>
+  </div>
 </div>
 {% endblock %}
